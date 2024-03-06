@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Bills</h1>
+<div class="d-flex justify-content-between align-items-center">
+  <%= link_to "Generate bill", new_admin_bill_path, class:"btn btn-primary mt-5" %>
+  <%= button_to "Sign Out", destroy_admin_session_path, method: :delete, class:"btn btn-danger mt-5" %>
+</div>
+<h1 class="mt-5">Bills</h1>
 
 <div id="admin_bills">
   <% @admin_bills.each do |admin_bill| %>
     <%= render admin_bill %>
-    <%= link_to "Edit bill", edit_admin_bill_path(admin_bill) %>
-    <%= button_to "Delete Bill", admin_bill, method: :delete %>
-
   <% end %>
 </div>
 
-<%= link_to "New bill", new_admin_bill_path %>

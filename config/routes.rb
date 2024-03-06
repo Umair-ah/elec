@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   post 'bill_pay/:id', to:"homes#pay", as: :pay_bill 
 
+  
+
   root "homes#index"
 end

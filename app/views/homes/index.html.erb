@@ -1,12 +1,31 @@
-<% @bills.each do |bill| %>
-  <%= bill.id %>
-  <%= bill.bill_date %>
-  <%= bill.amount %>
-  <%= bill.paid %>
-
-  
-  <% if !bill.paid?  %>
-    <%= button_to "Click To Pay", pay_bill_path(bill) %>
-  <% end %>
-  
-<% end %>
+<div class="d-flex justify-content-end align-items-center">
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-danger mt-5" %>
+</div>
+<h1 class="text-center">Your Bills!</h1>
+<table class="container table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Bill Date</th>
+      <th>Amount</th>
+      <th>Paid</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= bill.id %></td>
+        <td><%= bill.bill_date %></td>
+        <td><%= bill.amount %></td>
+        <td><%= bill.paid %></td>
+        
+        <td>
+          <% if !bill.paid? %>
+            <%= button_to "Click To Pay", pay_bill_path(bill), method: :post, class: 'btn btn-primary' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

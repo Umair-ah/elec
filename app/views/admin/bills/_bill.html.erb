@@ -1,22 +1,32 @@
-<div id="<%= dom_id bill %>">
-  <p>
-    <strong>User:</strong>
-    <%= bill.user.email %>
-  </p>
+<table class="table table-striped">
+  <tbody>
+      <tr class="<%= 'table-success' if bill.paid? %>">
+        <td>
+          <div id="<%= dom_id bill %>">
+            <p>
+              <strong>User:</strong>
+              <%= bill.user.email %>
+            </p>
 
-  <p>
-    <strong>Bill date:</strong>
-    <%= bill.bill_date %>
-  </p>
+            <p>
+              <strong>Bill date:</strong>
+              <%= bill.bill_date %>
+            </p>
 
-  <p>
-    <strong>Amount:</strong>
-    <%= bill.amount %>
-  </p>
+            <p>
+              <strong>Amount:</strong>
+              <%= bill.amount %>
+            </p>
 
-  <p>
-    <strong>Paid:</strong>
-    <%= bill.paid %>
-  </p>
+            <p>
+              <strong>Paid:</strong>
+              <%= bill.paid %>
+            </p>
 
-</div>
+            <%= link_to "Edit bill", edit_admin_bill_path(bill), class: 'btn btn-warning btn-sm mr-1' %>
+            <%= button_to "Delete Bill", bill, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          </div>
+        </td>
+      </tr>
+  </tbody>
+</table>
