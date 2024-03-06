@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bills</h1>
+
+<div id="admin_bills">
+  <% @admin_bills.each do |admin_bill| %>
+    <%= render admin_bill %>
+    <%= link_to "Edit bill", edit_admin_bill_path(admin_bill) %>
+    <%= button_to "Delete Bill", admin_bill, method: :delete %>
+
+  <% end %>
+</div>
+
+<%= link_to "New bill", new_admin_bill_path %>

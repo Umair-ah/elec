@@ -1,0 +1,12 @@
+<% @bills.each do |bill| %>
+  <%= bill.id %>
+  <%= bill.bill_date %>
+  <%= bill.amount %>
+  <%= bill.paid %>
+
+  
+  <% if !bill.paid?  %>
+    <%= button_to "Click To Pay", pay_bill_path(bill) %>
+  <% end %>
+  
+<% end %>

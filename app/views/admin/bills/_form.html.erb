@@ -1,0 +1,32 @@
+<%= form_with(model: admin_bill) do |form| %>
+  <% if admin_bill.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_bill.errors.count, "error") %> prohibited this admin_bill from being saved:</h2>
+
+      <ul>
+        <% admin_bill.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.collection_select :user_id, User.order(:email), :id, :email %>
+  </div>
+
+  <div>
+    <%= form.label :bill_date, style: "display: block" %>
+    <%= form.date_field :bill_date %>
+  </div>
+
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
